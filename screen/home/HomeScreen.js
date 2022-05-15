@@ -1,12 +1,34 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import { View, Text, StyleSheet, SafeAreaView } from 'react-native'
+import React, {useState} from 'react'
+import { COLORS } from '../../common/Theme'
+import AppBar from '../components/AppBar'
+import Category from '../components/Category'
+import Menu from '../components/Menu'
+import { menuData } from '../../common/Contant'
 
 const HomeScreen = () => {
+  const [categorySelected, setCategorySelected] = useState(1)
+  let listMenu = menuData.filter(value => value.categoryId == categorySelected)
+
+  onSelectCategory = (id) => {
+    console.log(id)
+    setCategorySelected(id)
+  }
+
   return (
-    <View>
-      <Text>HomeScreen</Text>
-    </View>
+    <SafeAreaView style={styles.container}>
+      <AppBar />
+      <Category onSelectCategory={onSelectCategory} />
+      <Menu data={listMenu}/>
+    </SafeAreaView>
   )
 }
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: COLORS.white,
+    flex: 1
+  }
+})
 
 export default HomeScreen
