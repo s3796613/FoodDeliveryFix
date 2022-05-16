@@ -89,18 +89,18 @@ export const menuData = [
     },
     {
         menuId: 6,
-        categoryId: 1,
+        categoryId: 2,
         name: "Tomato Pasta",
         photo: IMAGES.tomato_pasta,
         description: "Pasta with fresh tomatoes",
         calories: 100,
         price: 10,
-        duration: "5 - 10 min",
+        duration: "15 - 20 min",
         star: 1
     },
     {
         menuId: 7,
-        categoryId: 3,
+        categoryId: 4,
         name: "Mediterranean Chopped Salad ",
         photo: IMAGES.salad,
         description: "Finely chopped lettuce, tomatoes, cucumbers",
@@ -111,7 +111,7 @@ export const menuData = [
     },
     {
         menuId: 8,
-        categoryId: 4,
+        categoryId: 3,
         name: "Chicago Style Hot Dog",
         photo: IMAGES.chicago_hot_dog,
         description: "Fresh tomatoes, all beef hot dogs",
@@ -133,7 +133,7 @@ export const menuData = [
     },
     {
         menuId: 10,
-        categoryId: 1,
+        categoryId: 2,
         name: "Kolo Mee",
         photo: IMAGES.kolo_mee,
         description: "Noodles with char siu",
@@ -144,7 +144,7 @@ export const menuData = [
     },
     {
         menuId: 11,
-        categoryId: 1,
+        categoryId: 2,
         name: "Sarawak Laksa",
         photo: IMAGES.sarawak_laksa,
         description: "Vermicelli noodles, cooked prawns",
@@ -176,8 +176,8 @@ export const menuData = [
         star: 2
     },
     {
-        menuId: 12,
-        categoryId: 9,
+        menuId: 14,
+        categoryId: 10,
         name: "Teh C Peng",
         photo: IMAGES.teh_c_peng,
         description: "Three Layer Teh C Peng",
@@ -187,8 +187,8 @@ export const menuData = [
         star: 5
     },
     {
-        menuId: 13,
-        categoryId: 10,
+        menuId: 15,
+        categoryId: 9,
         name: "ABC Ice Kacang",
         photo: IMAGES.ice_kacang,
         description: "Shaved Ice with red beans",
@@ -198,8 +198,8 @@ export const menuData = [
         star: 2
     },
     {
-        menuId: 14,
-        categoryId: 10,
+        menuId: 16,
+        categoryId: 9,
         name: "Kek Lapis",
         photo: IMAGES.kek_lapis,
         description: "Layer cakes",

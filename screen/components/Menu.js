@@ -1,12 +1,12 @@
 import { StyleSheet, Text, View, FlatList, TouchableOpacity, Image } from 'react-native'
 import React from 'react'
-import { menuData } from '../../common/Contant'
 import { COLORS, SIZES } from '../../common/Theme'
 import { ICONS } from '../../common/Images'
+import { useSelector } from 'react-redux'
 
 
-const Menu = (props) => {
-    
+const Menu = () => {
+    const menuData = useSelector((state) => state.home.menuData)
     renderItem = ({item}) => (
         <TouchableOpacity style={styles.container}>
             <View>
@@ -28,7 +28,7 @@ const Menu = (props) => {
 
   return (
       <FlatList
-          data={props}
+          data={menuData}
           renderItem={renderItem}
       />
   )
@@ -49,13 +49,14 @@ const styles = StyleSheet.create({
     duration: {
         position: 'absolute',
         backgroundColor: COLORS.white,
-        top: 160,
+        top: 137,
         padding: SIZES.padding * 2,
         width: SIZES.width * 0.3,
+        height: "34%",
         marginLeft: SIZES.padding * 2,
         borderBottomLeftRadius: SIZES.radius,
         borderTopRightRadius: SIZES.radius,
-        elevation: 2
+        elevation: 2,
         
     },
 
@@ -66,7 +67,9 @@ const styles = StyleSheet.create({
 
     menu_title: {
         fontFamily: 'Roboto-Black',
-        fontSize: 16
+        fontSize: 16,
+        color: 'black',
+        marginTop: 8
     },
 
     menu_type: {

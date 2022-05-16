@@ -1,40 +1,47 @@
-import { StyleSheet, Text, View, Image } from 'react-native'
-import React from 'react'
+import { StyleSheet, Text, View, Image, FlatList, TouchableOpacity } from 'react-native'
+import React, {useEffect} from 'react'
 import { COLORS, SIZES, STYLES } from '../../common/Theme'
-import { FlatList, TouchableOpacity } from 'react-native-gesture-handler'
-import { categoryData } from '../../common/Contant'
+import { useDispatch, useSelector } from 'react-redux'
+import { getCategories, onSelectedCategory } from '../home/HomeSlice'
 
 
 
-export default Category = (props) => {
+export default Category = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.category_title}>{`Main\nCategory`}</Text>
-      <CategoryList onSelectCategory={props.onSelectCategory} />
+      <CategoryList />
     </View>
   )
 }
 
-export const CategoryList = (props) => {
+export const CategoryList = () => {
+    const categoriesData = useSelector((state) => state.home.categoryData)
+    const currentCategory = useSelector((state) => state.home.currentCategory)
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(getCategories())
+    },[categoriesData])
 
     renderItem = ({item}) => (
         <TouchableOpacity 
         
-            style={styles.category_list}
-            onPress={() => props.onSelectCategory(item.id)}
+            style={[styles.category_list, currentCategory == item.id ? styles.category_list__selected : ""]}
+            onPress={() => dispatch(onSelectedCategory(item.id))}
         >
-            <View style={styles.category_list__circle}>
+            <View style={[styles.category_list__circle, currentCategory == item.id ? styles.category_list__circle__selected : ""]}>
                 <Image source={item.icon} style={styles.icon}/>
             </View>
             
-            <Text style={styles.category_list__text}>{item.name}</Text>
+            <Text style={[styles.category_list__text, currentCategory == item.id ? styles.category_list__text__selected : "" ]}>{item.name}</Text>
             
         </TouchableOpacity>
     )
 
     return(
         <FlatList
-            data={categoryData}
+            data={categoriesData}
             renderItem={renderItem}
             horizontal={true}
             showsHorizontalScrollIndicator={false}
@@ -67,7 +74,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         margin: SIZES.padding,
         paddingBottom: SIZES.padding * 2,
-        backgroundColor: COLORS.secondary,
+        backgroundColor: COLORS.white,
         ...STYLES.shadow,
         elevation: 5
     },
@@ -80,10 +87,13 @@ const styles = StyleSheet.create({
         width: 50,
         height: 50,
         borderRadius: SIZES.radius,
-        backgroundColor: COLORS.white,
+        backgroundColor: COLORS.secondary,
         justifyContent: 'center',
         alignItems: 'center',
         marginBottom: SIZES.padding
+    },
+    category_list__circle__selected: {
+        backgroundColor: COLORS.white
     },
 
     category_list__text: {
