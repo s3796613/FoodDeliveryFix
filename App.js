@@ -7,7 +7,10 @@ import MapScreen from './screen/map/MapScreen'
 import CustomBottomTab from './common/Tab'
 import { Provider } from 'react-redux'
 import store from './store'
-const Stack = createStackNavigator()
+import { enableLatestRenderer } from 'react-native-maps';
+
+enableLatestRenderer();
+const Stack = createStackNavigator();
 
 const App = () => {
   return (

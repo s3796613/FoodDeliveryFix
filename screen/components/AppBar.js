@@ -2,11 +2,19 @@ import { View, Text, TouchableOpacity, Image, StyleSheet } from 'react-native'
 import React from 'react'
 import {ICONS} from '../../common/Images'
 import {COLORS, SIZES} from '../../common/Theme'
+import { useNavigation } from '@react-navigation/native'
+import { screens } from '../../common/Contant'
 
 const AppBar = () => {
+  const navigator = useNavigation();  
+
+  const navigationToMap = () => {
+    navigator.push(screens.map)
+  }  
+
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={{justifyContent: 'center'}}>
+      <TouchableOpacity style={{justifyContent: 'center'}} onPress={() => navigationToMap()}>
           <Image source={ICONS.nearby} style={styles.icon}/>
       </TouchableOpacity>
 
